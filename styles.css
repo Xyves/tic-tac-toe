@@ -1,0 +1,32 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: center;
+  align-content: center;
+  gap: 2px;
+  width: 810px;
+  height: 810px;
+  font-size: 260px;
+  background-color: black;
+  text-align: center;
+  vertical-align: top;
+}
+.cell {
+  background-color: aquamarine;
+  cursor: pointer;
+  width: 270px;
+}
