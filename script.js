@@ -1,8 +1,13 @@
-import { board, updateBoard, isGameActive, result } from "./modules.js";
+import {
+  board,
+  updateBoard,
+  isGameActive,
+  resetBoardToDefault,
+} from "./modules.js";
 
 const cells = Array.from(document.querySelectorAll(".cell"));
-const statusText = document.querySelector(".statusText");
 const restartBtn = document.querySelector("#restart-btn");
+const winningMsg = document.querySelector(".winning-message");
 
 function createPlayer(symbol) {
   return { symbol: symbol };
@@ -11,30 +16,30 @@ const player1 = createPlayer("X").symbol;
 const player2 = createPlayer("O").symbol;
 let currentPlayer = player1;
 
+// Add event click on every cell
 for (let i = 0; i < cells.length; i++) {
   cells[i].addEventListener("click", isValidAction);
 }
 
 function isValidAction() {
   const index = this.getAttribute("cellIndex");
-  if (cells[index].textContent !== "") {
+  if (isGameActive && cells[index].textContent !== "") {
     return false;
   }
   takeTurn(index);
 }
-
+// Change the player
 function takeTurn(index) {
-  if (isGameActive && isGameWon) {
+  if (isGameActive) {
     cells[index].textContent = currentPlayer;
     updateBoard(index, currentPlayer);
-    if (!isGameWon(board)) {
-      switchPlayer();
+    if (isGameWon(board)) {
+      disableCells();
+    } else if (isTie()) {
+      winningMsg.textContent = "It's a tie!!!";
     } else {
-      let board = null;
-      console.log(board);
+      switchPlayer();
     }
-  } else {
-    return error;
   }
 }
 
@@ -50,16 +55,15 @@ function isGameWon(board) {
     [board[0], board[4], board[8]],
     [board[2], board[4], board[6]],
   ];
-
   for (const condition of winningPatterns) {
     // Player X wins
     if (condition.every((element) => element === "X")) {
-      console.log(`player1 has won!`);
+      winningMsg.textContent = "Player 1 has won!";
       return true;
     }
     // Player O wins
     if (condition.every((element) => element === "O")) {
-      console.log(`player2 has won!`);
+      winningMsg.textContent = "Player 2 has won!";
       return true;
     }
   }
@@ -72,5 +76,31 @@ function switchPlayer() {
     currentPlayer = player1;
   } else {
     console.log("Error!");
+  }
+}
+restartBtn.addEventListener("click", restartBoard);
+
+function restartBoard() {
+  resetBoardToDefault();
+  enableCells();
+  winningMsg.textContent = "";
+  for (const cell of cells) {
+    cell.textContent = "";
+  }
+}
+
+function isTie() {
+  return (
+    board.every((cell) => cell === "X" || cell === "O") && !isGameWon(board)
+  );
+}
+function disableCells() {
+  for (const cell of cells) {
+    cell.removeEventListener("click", isValidAction);
+  }
+}
+function enableCells() {
+  for (const cell of cells) {
+    cell.addEventListener("click", isValidAction);
   }
 }
