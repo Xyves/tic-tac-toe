@@ -1,15 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Poppins:ital@1&display=swap");
+
 *,
 *::after,
 *::before {
   box-sizing: border-box;
 }
 body {
+  height: 100vh;
   margin: 0;
+  background-color: #11111b;
+}
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 3.2rem;
+  font-family: "Dela Gothic One", cursive;
+  margin: 0;
+  margin-top: 20px;
 }
 .container {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  margin: 10px;
 }
 .board {
   display: grid;
@@ -17,16 +30,53 @@ body {
   grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   align-content: center;
-  gap: 2px;
-  width: 810px;
-  height: 810px;
-  font-size: 260px;
-  background-color: black;
+  gap: 1px;
+  width: 610px;
+  height: 640px;
+  font-size: 174px;
+  background-color: white;
   text-align: center;
-  vertical-align: top;
+  vertical-align: center;
+  margin: 30px;
 }
 .cell {
-  background-color: aquamarine;
+  background-color: #313244;
+  color: white;
   cursor: pointer;
-  width: 270px;
+  width: 205px;
+}
+.winning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#restart-btn {
+  padding: 10px;
+  font-size: 2rem;
+  text-align: center;
+  display: block;
+}
+.winning-message {
+  font-size: 2.5rem;
+  color: #d4d4d4;
+  font-family: "Dela Gothic One", cursive;
+}
+footer img {
+  max-height: 1.5rem;
+}
+
+footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+  color: rgb(229, 231, 235);
+  background-color: black;
+  font-size: 14px;
+  gap: 1rem;
 }
