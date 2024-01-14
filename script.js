@@ -6,16 +6,15 @@ import {
 } from "./module.js";
 
 const cells = Array.from(document.querySelectorAll(".cell"));
-
 const restartBtn = document.querySelector("#restart-btn");
 const winningMsg = document.querySelector(".winning-message");
+const player1 = createPlayer("X").symbol;
+const player2 = createPlayer("O").symbol;
+let currentPlayer = player1;
 
 function createPlayer(symbol) {
   return { symbol: symbol };
 }
-const player1 = createPlayer("X").symbol;
-const player2 = createPlayer("O").symbol;
-let currentPlayer = player1;
 
 // Add event click on every cell
 for (let i = 0; i < cells.length; i++) {
@@ -29,6 +28,7 @@ function isValidAction() {
   }
   takeTurn(index);
 }
+
 // Change the player
 function takeTurn(index) {
   if (isGameActive) {
