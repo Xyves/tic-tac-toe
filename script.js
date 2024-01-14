@@ -3,9 +3,10 @@ import {
   updateBoard,
   isGameActive,
   resetBoardToDefault,
-} from "./modules.js";
+} from "./module.js";
 
 const cells = Array.from(document.querySelectorAll(".cell"));
+
 const restartBtn = document.querySelector("#restart-btn");
 const winningMsg = document.querySelector(".winning-message");
 
@@ -69,6 +70,7 @@ function isGameWon(board) {
   }
   return winner;
 }
+
 function switchPlayer() {
   if (currentPlayer == player1) {
     currentPlayer = player2;
@@ -78,16 +80,15 @@ function switchPlayer() {
     console.log("Error!");
   }
 }
-restartBtn.addEventListener("click", restartBoard);
 
-function restartBoard() {
-  resetBoardToDefault();
-  enableCells();
-  winningMsg.textContent = "";
-  for (const cell of cells) {
-    cell.textContent = "";
+restartBtn.addEventListener("click", ()=>{
+    resetBoardToDefault();
+    enableCells();
+    winningMsg.textContent = "";
+    for (const cell of cells) {
+      cell.textContent = "";
   }
-}
+})
 
 function isTie() {
   return (
