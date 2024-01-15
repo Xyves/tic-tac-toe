@@ -1,23 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
-
-*,
-*::after,
-*::before {
+html{
   box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  overflow: hidden;
+
 }
 body {
   height: 100vh;
-  margin: 0;
   background-color: #11111b;
-  overflow: hidden;
-
 }
  h1 {
   text-align: center;
   color: white;
   font-size: 3.7rem;
   letter-spacing: 7px;
-  margin: 20px 0 2% 0;
+  margin-top: 20px;
   font-family: "Dela Gothic One", cursive;
 }
 
@@ -84,7 +89,7 @@ footer {
   width: 100%;
   color: rgb(185, 185, 185);
   background-color: black;
-  padding:40px 0;
+  padding:20px 0;
   gap:15px;
 }
 
