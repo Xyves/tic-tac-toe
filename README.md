@@ -1,5 +1,6 @@
-<h1 align="center">Tic Tac Toe</h1>
-[![image.png](https://i.postimg.cc/SxGMZLB9/image.png)](https://postimg.cc/NK5FFXfG)
+
+[![tictactoe.png](https://i.postimg.cc/zDM6BKPT/tictactoe.png)](https://postimg.cc/xqvtpJQd)
+
  <p align="center">
     A simple web-based Tic-Tac-Toe game built with HTML, CSS, and JavaScript.
     <br />
